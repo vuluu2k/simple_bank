@@ -8,8 +8,10 @@ migrateup:
 	migrate -path db/migration -database "postgresql://root:vuluu2k@localhost:5432/simple_bank?sslmode=disable" -verbose up
 migratedown:
 	migrate -path db/migration -database "postgresql://root:vuluu2k@localhost:5432/simple_bank?sslmode=disable" -verbose down
+server:
+	go run main.go
 sqlc:
 	sudo sqlc generate
 test:
 	go test -v -cover ./...
-.PHONY: postgres createdb dropdb migrateup migratedown sqlc
+.PHONY: postgres createdb dropdb migrateup migratedown sqlc server
